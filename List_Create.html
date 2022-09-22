@@ -1,0 +1,87 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+    <p> Enter some text to add to the list</p>
+
+
+    <input id="new-text"></input>
+    <button id="add-text">Add</button>
+
+    <!-- Empty unordered list -->
+    <ul id="list-of-text"></ul>
+
+    <button id="clear">Clear</button>
+
+    <script>
+
+        let textInput = document.querySelector('#new-text')
+        let addButton = document.querySelector('#add-text')
+        let textList = document.querySelector('#list-of-text')
+        let cleanButton = document.querySelector('#clear')
+
+
+        let elementInList = 0  // Tracking number of item in list
+        let maxElements = 10
+
+        document.addEventListener('keyup', function (){
+            if(event.keyCode == 13){
+                addButton.click() // click the addButton id user presses enter key
+            }
+
+        })
+
+
+
+        addButton.addEventListener('click', function() {
+
+
+            // read the text in the input
+            let newText = textInput.value
+
+            if (newText.length == 0 ) { // validate user has typed in some text
+                alert('Enter some text')
+                return
+            }
+
+
+
+            if ( elementInList >= maxElements) { // check the max number is not exceeded.
+                alert('No more elements can be added')
+                return
+            }
+
+
+
+            //console.log(newText)
+
+            // Create a new li element
+            let newListItem = document.createElement('li')
+
+            // The li element text should be the text from the input
+            newListItem.innerHTML = newText
+
+            // Add the new li element ad a child of the ul element
+            textList.appendChild(newListItem);
+
+            // Clear the text in the input
+            textInput.value = ''
+
+            elementInList++ // increasing the counting elments in the list
+        })
+
+        cleanButton.addEventListener('click', function () {
+            textList.innerHTML = ''
+            elementInList = 0
+        })
+
+
+    </script>
+
+
+    </body>
+    </html>

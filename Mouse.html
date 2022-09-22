@@ -1,0 +1,41 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+    <!-- Write your HTML content here --->
+
+    <p id="mouse-me"> Move your mouse here</p>  <!-- when the mouse moved over --->
+
+    <script>
+
+      let mouseCount = 0
+
+      let massage = document.querySelector('#mouse-me')
+
+      massage.addEventListener('mouseover', function (){
+        // increase mouseCount by 1
+        // mouseCount ++    // line 21 and 22 will do the same function
+        mouseCount = mouseCount + 1
+        if (mouseCount == 1 ) {
+          massage.innerHTML = 'Mouse has been here ' + mouseCount + ' time. '
+        } else {
+          massage.innerHTML = 'Mouse has been here ' + mouseCount + ' times. '
+        }
+
+      })
+
+      massage.addEventListener('mouseout', function (){
+        massage.innerHTML = 'Your mouse is Not on this massage'
+      })
+
+
+
+
+    </script>
+
+    </body>
+    </html>

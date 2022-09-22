@@ -1,0 +1,67 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <link rel="stylesheet" type="text/css" href="Food_Tab_Style.css">
+
+    <h1> Favorite Foods </h1>
+
+    <div id="tabs">
+
+      <button data-content-id="pizza" class="tab-button">Pizza</button>
+      <button data-content-id="cheesecake" class="tab-button">Cheesecake</button>
+      <button data-content-id="sushi" class="tab-button">Sushi</button>
+
+    </div>
+
+    <div id="pizza" class="tab-content">Pizza is awesome</div>
+    <div id="cheesecake" class="tab-content">CheeseCake is delicious</div>
+    <div id="sushi" class="tab-content"> Sushi is amazing </div>
+
+
+    <script>
+
+      let buttons = document.querySelectorAll('.tab-button')
+      let tabContents = document.querySelectorAll('.tab-content')
+
+      tabContents.forEach( function(divEl){
+        divEl.style.display = 'none'
+
+
+      })
+
+      tabContents[0].style.display = 'block'  // Show the first tab
+      buttons[0].classList.add('active')
+
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          // hide all content
+          // Show the div with content that relates to the button that was clicked.
+          tabContents.forEach(function (divEl) {
+            divEl.style.display = 'none'
+        })
+
+          buttons.forEach(function (button) {
+              button.classList.remove('active')
+        })
+
+        this.classList.add('active')
+
+          let contentId = this.getAttribute('data-content-id')
+        // This is the element that generated the even
+          let tabContent = document.querySelector('#' + contentId) // An Example of #pizza
+          tabContent.style.display = 'block'
+        })
+      })
+
+
+
+
+
+    </script>
+
+    </body>
+    </html>
